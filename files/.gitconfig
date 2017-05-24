@@ -1,0 +1,5 @@
+[user]
+	name = Martin Porter
+	email = martinjporter@gmail.com
+[marge]
+	tool = vimdiff
