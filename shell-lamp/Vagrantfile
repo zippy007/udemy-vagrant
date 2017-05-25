@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+
+def set_hostname(server)
+  server.vm.provision 'shell', inline: "hostname #{server.vm.hostname}"
+end
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "bento/centos-7.3"
+  config.vm.hostname = 'shell-lbox'
+  config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  config.vbguest.auto_update = false
+  
+  config.vm.provision "file", 
+    source: '~/vagrant/files/.gitconfig', 
+    destination: '~/.gitconfig'
+    
+  config.vm.provision "shell",
+    path: 'https://raw.githubusercontent.com/zippy007/udemy-vagrant/master/scripts/centos-lamp.sh'
+    
+  set_hostname(config)
+
+end
