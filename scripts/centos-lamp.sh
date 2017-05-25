@@ -4,7 +4,7 @@ sudo yum clean all
 
 sudo yum update -y --exclude=kernel
 
-sudo yum install -y nano got unzip screen
+sudo yum install -y nano git unzip screen
 
 sudo yum install -y httpd http-devel http-tools
 
@@ -13,8 +13,8 @@ sudo systemctl enable httpd
 sudo systemctl status httpd
 sudo systemctl stop httpd
 
-rm -rf /var/www/html
-ln -s /vagrant /var/www/html
+sudo rm -rf /var/www/html
+sudo ln -s /vagrant /var/www/html
 
 sudo systemctl start httpd
 
