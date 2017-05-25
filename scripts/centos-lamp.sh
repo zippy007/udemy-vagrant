@@ -26,3 +26,11 @@ sudo yum -y update
 
 sudo yum -y install mysql-server
 sudo systemctl start mysqld
+
+mysql -u root -e "SHOW DATABASES";
+
+cd /vagrant
+sudo -u vagrant wget -q https://raw.githubusercontent.com/zippy007/udemy-vagrant/master/files/index.html
+sudo -u vagrant wget -q https://raw.githubusercontent.com/zippy007/udemy-vagrant/master/files/info.php
+
+sudo systemctl restart httpd
